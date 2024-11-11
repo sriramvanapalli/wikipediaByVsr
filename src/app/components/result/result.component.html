@@ -1,0 +1,33 @@
+<div class="d-flex flex-row justify-content-center p-5">
+  <img src="assets\Wikipedia-logo.png" class="img-size" alt="wikipedia-logo" />
+</div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search..."
+          aria-label="Search"
+          [(ngModel)]="searchQuery"
+        />
+        <button class="btn btn-primary" type="button" (click)="onSearch()">
+          Search
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="results.length > 0">
+      <div *ngFor="let result of results">
+        <a target="_blank" [attr.href]="result.link" class="text-primary">{{
+          result.title
+        }}</a>
+        <p class="text-success">{{ result.description }}</p>
+      </div>
+    </div>
+    <p *ngIf="results.length === 0" class="text-center m-3">
+      No results found.
+    </p>
+  </div>
+</div>
